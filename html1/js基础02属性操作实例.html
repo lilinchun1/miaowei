@@ -3,8 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <style>
+        #div1{
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+        }
+        .red{
+            width: 300px;
+            border: 10px solid #ccc;
+            background-color: red;
+            color: yellow;
+        }
+        .yellow{
+            width: 500px;
+            border: 20px solid #000;
+            background-color: yellow;
+            color: red;
+        }
+    </style>
 </head>
 <body>
+<div id="div1"></div>
+<span id="span1">妙味:</span>
+<input type="text" id="input1"/>
+<button id="btn1">提交</button>
 
+<button id="add">+</button>
+<button id="dda">-</button>
+<button id="red">红</button>
+<button id="yellow">黄</button>
+<p id="p1" style="font-size: 14px;">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis delectus dolorem perspiciatis quibusdam quod voluptatem voluptatibus? Accusamus consequatur dignissimos ducimus ex harum libero nisi numquam quidem sit tempore totam, voluptatibus.
+</p>
+<script>
+    window.onload = function () {
+        var oDiv = document.getElementById('div1');
+        var oSpan = document.getElementById('span1');
+        var oInput = document.getElementById('input1');
+        var oBtn = document.getElementById('btn1');
+
+        oBtn.onclick = function () {
+            if( oInput.value === ''){
+                alert("不能为空")
+            } else {
+                oDiv.innerHTML += oSpan.innerHTML + oInput.value + '<br/>';
+                oInput.value = '';
+            }
+        };
+
+        var oAdd = document.getElementById('add');
+        var oDda = document.getElementById('dda');
+        var oP1 = document.getElementById('p1');
+        var btnR = document.getElementById('red');
+        var btnY = document.getElementById('yellow');
+        var size1 = 14;
+
+        oDda.onclick = function () {
+            oP1.style.fontSize = size1-- + 'px';
+        };
+
+        oAdd.onclick = function () {
+            oP1.style.fontSize = size1++ + 'px';
+        };
+
+        btnR.onclick = function () {
+            oP1.className = 'red';
+        };
+        btnY.onclick = function () {
+            oP1.className = 'yellow';
+        };
+    }
+</script>
 </body>
 </html>

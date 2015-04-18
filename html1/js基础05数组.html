@@ -3,8 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <style>
+        #wrap{
+            position: relative;
+            margin: 0 auto;
+            width: 510px;
+            height: 340px;
+            border: 10px solid #000;
+            background: #343434 url(../img/loading.gif) 50% 50% no-repeat;
+        }
+        a{
+            position: absolute;
+            top: 50%;
+            margin-top: -20px;
+            width: 40px;
+            height: 40px;
+            border: 5px solid #cccccc;
+            background-color: #000;
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 40px;
+            text-decoration: none;
+            opacity: .3;
+        }
+        a:hover{
+            opacity: .9;
+        }
+        img{
+            width: 100%;
+            height: 340px;
+        }
+        .next{
+            right: 10px;
+        }
+        .pre{
+            left: 10px;
+        }
+        p{
+            margin: 0;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            background-color: rgba(0,0,0,.6);
+            color: #ffffff;
+            text-indent: 10px;
+        }
+        span{
+            position: absolute;
+            bottom: 0;
+            right: 5px;
+            color: #ffffff;
+            line-height: 30px;
+        }
+    </style>
 </head>
 <body>
+<div id="wrap">
+    <a class="next" href="javascript:;"> > </a>
+    <a class="pre" href="javascript:;"> < </a>
+    <img src="" alt=""/>
+    <p>加载中。。。</p>
+    <span>  </span>
+</div>
+<script>
+    window.onload = function () {
+        var oBox = document.getElementById('wrap');
+        var oAtag = oBox.getElementsByTagName('a');
+        var oImg = oBox.getElementsByTagName('img')[0];
+        var oPtag = oBox.getElementsByTagName('p')[0];
+        var oStag = oBox.getElementsByTagName('span')[0];
 
+        var arrImg = [
+            '../img/IMG_0396.JPG',
+            '../img/IMG_0397.JPG',
+            '../img/IMG_0398.JPG',
+            '../img/IMG_0399.JPG',
+            '../img/IMG_0400.JPG',
+            '../img/IMG_0401.JPG'
+        ];
+
+        var arrText = [
+                '美图1',
+                '图片2',
+                'tupian3',
+                '花4',
+                'hua5',
+                '二米哈桑个6'
+        ];
+
+        var num = 0;
+
+        function ImgTab() {
+            oImg.src = arrImg[num];
+            oPtag.innerHTML = arrText[num];
+            oStag.innerHTML = num + 1 + '/' + arrImg.length;
+        }
+
+        ImgTab();
+
+        oAtag[0].onclick = function () {
+            num ++ ;
+            if( num > arrImg.length - 1){
+                num = 0;
+            }
+            ImgTab();
+        };
+        oAtag[1].onclick = function () {
+            num -- ;
+            if( num < 0){
+                num = arrImg.length - 1;
+            }
+            ImgTab();
+        }
+    }
+</script>
 </body>
 </html>

@@ -3,8 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <style>
+        .div1{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;}
+    </style>
 </head>
 <body>
-
+<label>属性</label>
+<input type="text"/>
+<label>属性值</label>
+<input type="text"/>
+<button>确定</button>
+<div class="div1"></div>
+<script>
+    window.onload = function () {
+        var oInp = document.getElementsByTagName('input');
+        var oBtn = document.getElementsByTagName('button');
+        var oDiv = document.getElementsByTagName('div');
+        console.log(oBtn[0].innerHTML);
+        oBtn[0].onclick = function () {
+            oDiv[0].style[oInp[0].value] = oInp[1].value;
+        }
+    }
+</script>
 </body>
 </html>

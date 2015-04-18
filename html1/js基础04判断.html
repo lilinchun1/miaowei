@@ -3,8 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+        }
+    </style>
 </head>
 <body>
+<button id="add">+</button>
+<button id="dda">-</button>
+<button id="red">红</button>
+<button id="yellow">黄</button>
+<p id="p1" style="font-size: 14px;">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis delectus dolorem perspiciatis quibusdam quod voluptatem voluptatibus? Accusamus consequatur dignissimos ducimus ex harum libero nisi numquam quidem sit tempore totam, voluptatibus.
+</p>
+<div id="div1">
+
+</div>
+<script>
+    window.onload = function () {
+        var oAdd = document.getElementById('add');
+        var oDda = document.getElementById('dda');
+        var oP1 = document.getElementById('p1');
+
+        var size1 = 14;
+
+        oDda.onclick = function () {
+            if( size1 > 12 ){
+                size1--;
+                oP1.style.fontSize = size1 + 'px';
+            }
+        };
+
+        oAdd.onclick = function () {
+            if( size1 < 22 ){
+                size1 ++;
+                oP1.style.fontSize = size1 + 'px';
+            }
+
+        };
+
+        var oDiv = document.getElementById('div1');
+        var flg = true;
+        oDiv.onclick = function () {
+            if(flg === true){
+                oDiv.style.backgroundColor = 'red';
+                flg = false;
+            }else {
+                oDiv.style.backgroundColor = 'blue';
+                flg = true;
+            }
+        };
+    }
+</script>
 
 </body>
 </html>
