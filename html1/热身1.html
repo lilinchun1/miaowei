@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style-type: none;
+        }
+        .nav{
+            height: 30px;
+        }
+        .nav > li{
+            position: relative;
+            float: left;
+        }
+        .nav > li a{
+            width: 80px;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #000;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+        .nav > li > ul {
+            position: absolute;
+            top: 30px;
+            left: 0;
+            width: 100px;
+            border: 1px solid #000;
+            display: none;
+        }
+        .nav > li > ul > li {
+            height: 25px;
+            line-height: 25px;
+        }
+    </style>
+</head>
+<body>
+<ul class="nav" id="j_nav">
+    <li>
+        <a href="">项目1</a>
+        <ul>
+            <li>子类1</li>
+            <li>子类2</li>
+            <li>子类3</li>
+        </ul>
+    </li>
+    <li>
+        <a href="">项目2</a>
+        <ul>
+            <li>子类1</li>
+            <li>子类2</li>
+            <li>子类3</li>
+        </ul>
+    </li>
+    <li>
+        <a href="">项目3</a>
+        <ul>
+            <li>子类1</li>
+            <li>子类2</li>
+            <li>子类3</li>
+        </ul>
+    </li>
+</ul>
+<script>
+    window.onload = function () {
+        var oNav = document.getElementById('j_nav');
+        var list1 = oNav.children;
+
+        for(var i = 0; i < list1.length; i++){
+            list1[i].onmouseover = function () {
+                var list2 = this.getElementsByTagName('ul');
+                list2[0].style.display = 'block';
+            };
+            list1[i].onmouseout = function () {
+                var list2 = this.getElementsByTagName('ul');
+                list2[0].style.display = 'none';
+            };
+        }
+
+    }
+</script>
+</body>
+</html>

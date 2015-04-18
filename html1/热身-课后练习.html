@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .wrap-box{
+            width: 100%;
+        }
+        h1{
+            display: inline;
+        }
+        .mod-item{
+            margin-top: 20px;
+            width: 200px;
+            height: 200px;
+            border: 2px solid #000;
+        }
+        .alert-wrap{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -130px;
+            margin-left: -85px;
+            padding: 10px;
+            width: 240px;
+            height: 170px;
+            border: 10px solid #c6c6c6;
+            background-color: #ffffff;
+            display: none;
+            z-index: 2;
+        }
+        .alert-wrap button{
+            margin-bottom: 10px;
+            width: 35px;
+            height: 35px;
+        }
+        .overlay{
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+        }
+        .alert-wrap .btn{
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap-box">
+    <h1>设置div样式</h1>
+    <button id="set-btn">点击设置</button>
+    <div class="mod-item" id="set-item"></div>
+</div>
+<div class="alert-wrap" id="set-wrap">
+    <label>请选择颜色&nbsp;</label>
+    <button value="red">红</button>
+    <button value="yellow">黄</button>
+    <button value="blue">蓝</button>
+    <br/>
+    <label>请选择宽(px)</label>
+    <button value="100">100</button>
+    <button value="300">300</button>
+    <button value="400">400</button>
+    <br/>
+    <label>请选择高(px)</label>
+    <button value="100">100</button>
+    <button value="300">300</button>
+    <button value="400">400</button>
+    <br/>
+    <button class="btn">恢复</button>
+    <button class="btn">确定</button>
+</div>
+<div class="overlay" id="overlay"></div>
+<script>
+    window.onload = function () {
+        var setBtn = document.getElementById('set-btn');
+        var setWrap = document.getElementById('set-wrap');
+        var setItem = document.getElementById('set-item');
+        var Overlay = document.getElementById('overlay');
+
+        setBtn.onclick = function () {
+            Overlay.style.display = setItem.style.display = setWrap.style.display = 'block';
+        };
+
+        var setWrapBtn = setWrap.getElementsByTagName('button');
+        for(var i = 0; i < setWrapBtn.length; i++){
+            setWrapBtn[i].nbr = i;
+            setWrapBtn[i].onclick = function () {
+                if( this.nbr < 3){
+                    setItem.style.backgroundColor = this.value;
+                }
+                if( 2 < this.nbr && this.nbr < 6){
+                    setItem.style.width = this.value + 'px';
+                }
+                 if( 5 < this.nbr && this.nbr < 9){
+                    setItem.style.height = this.value + 'px';
+                }
+                if( this.nbr === 9){
+                    setItem.style.height = 200 + 'px';
+                    setItem.style.width = 200 + 'px';
+                }
+                if( this.nbr === 10){
+                    Overlay.style.display = setWrap.style.display = 'none';
+                }
+
+            }
+        }
+
+    }
+</script>
+</body>
+</html>

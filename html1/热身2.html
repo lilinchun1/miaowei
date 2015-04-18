@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <title>Document</title>
+    <link rel="stylesheet" href=""/>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background-color: #cc0000;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="btn1" value="显示"/>
+<input type="button" id="btn2" value="隐藏"/>
+<div id="div1"></div>
+</body>
+<script>
+    window.onload = function () {
+        var oBtn1 = document.getElementById('btn1');
+        var oBtn2 = document.getElementById('btn2');
+        var oDiv1 = document.getElementById('div1');
+
+        oBtn1.onclick = function () {
+            oDiv1.style.backgroundColor = '#00ff00';
+            oDiv1.style.display = 'block';
+        };
+        oBtn2.onclick = function () {
+            oDiv1.style.backgroundColor = '#000';
+            oDiv1.style.display = 'none';
+        }
+    }
+</script>
+</html>
