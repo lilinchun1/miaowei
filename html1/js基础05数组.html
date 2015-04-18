@@ -62,6 +62,8 @@
     </style>
 </head>
 <body>
+<button>单循环</button>
+<button>重复循环</button>
 <div id="wrap">
     <a class="next" href="javascript:;"> > </a>
     <a class="pre" href="javascript:;"> < </a>
@@ -76,6 +78,18 @@
         var oImg = oBox.getElementsByTagName('img')[0];
         var oPtag = oBox.getElementsByTagName('p')[0];
         var oStag = oBox.getElementsByTagName('span')[0];
+
+        var oModBtn = document.getElementsByTagName('button');
+
+        var mod = true;
+
+        oModBtn[0].onclick = function () {
+            mod = false;
+        };
+
+        oModBtn[1].onclick = function () {
+            mod = true;
+        };
 
         var arrImg = [
             '../img/IMG_0396.JPG',
@@ -107,14 +121,20 @@
 
         oAtag[0].onclick = function () {
             num ++ ;
-            if( num > arrImg.length - 1){
+            if( num > arrImg.length - 1 && mod === false){
+                num = arrImg.length - 1;
+                alert('到最后了');
+            }else if( num > arrImg.length - 1 && mod === true){
                 num = 0;
             }
             ImgTab();
         };
         oAtag[1].onclick = function () {
             num -- ;
-            if( num < 0){
+            if( num < 0 && mod === false){
+                num = 0;
+                alert('到最前了');
+            }else if(num < 0 && mod === true){
                 num = arrImg.length - 1;
             }
             ImgTab();
