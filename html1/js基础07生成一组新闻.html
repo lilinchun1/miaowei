@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<button>生成新闻</button>
+<ul></ul>
+<script>
+    window.onload = function () {
+        var oBtn = document.getElementsByTagName('button')[0];
+        var oUl = document.getElementsByTagName('ul')[0];
+        var arr = [
+            '巴基斯坦枭龙编队为习近平护航 文章 出访',
+            '英媒:中国首次承认大量农储粮或已严重受损',
+            '昆明原书记被抓细节:到省委开会10余秒被控制',
+            '解放军无人破障机器人曝光 一次扫雷36米(图)',
+            '武长顺案巡视组约谈人为求自保一路换3次车牌',
+            '两市震荡沪指跌1.64% 南北车盘中暴涨暴跌',
+            '沪市交易额破万亿系统"爆表" 称非技术故障',
+            '股民连夜开户 汕头兄妹一个月身家暴涨72亿',
+            '保安辞职炒股遇"滑铁卢"重回岗位:没那个命',
+            '南方电网买官价曝光:供电所长百万 经理300万',
+            '外媒:中国藏獒热降温 身价百万元藏獒成食材'
+        ];
+        var len = arr.length;
+        oBtn.onclick = function () {
+            var text1 = '';
+            for(var i = 0; i < len; i++){
+                text1 += '<li>'+ arr[i] +'</li>';
+            }
+            oUl.innerHTML = text1;
+        }
+    }
+</script>
+</body>
+</html>

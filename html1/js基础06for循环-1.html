@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            font-size: 20px;
+            color: #ffffff;
+            background-color: #50ccff;
+        }
+    </style>
+</head>
+<body>
+<script>
+    window.onload = function () {
+        var str = null;
+        for(var i = 0; i < 100; i++){
+            str += '<div>'+ i +'</div>';
+        }
+        document.body.innerHTML = str;
+
+        var oDiv = document.getElementsByTagName('div');
+        var len = oDiv.length;
+        for( var j = 0; j < len; j++ ){
+            if( 0 <= j && j <= 9 ){
+                oDiv[j].style.left = j * 60 + 'px';
+            }
+            if( 10 <= j && j <= 19 ){
+                oDiv[j].style.left = (j - 10) * 60  + 'px';
+                oDiv[j].style.top = 60 + 'px';
+            }
+            if( 20 <= j && j <= 29 ){
+                oDiv[j].style.left = (j - 20) * 60  + 'px';
+                oDiv[j].style.top = 2 * 60 + 'px';
+            }
+            if( 30 <= j && j <= 39 ){
+                oDiv[j].style.left = (j - 30) * 60  + 'px';
+                oDiv[j].style.top = 3 * 60 + 'px';
+            }
+            if( 40 <= j && j <= 49 ){
+                oDiv[j].style.left = (j - 40) * 60  + 'px';
+                oDiv[j].style.top = 4 * 60 + 'px';
+            }
+            if( 50 <= j && j <= 59 ){
+                oDiv[j].style.left = (j - 50) * 60  + 'px';
+                oDiv[j].style.top = 5 * 60 + 'px';
+            }
+            if( 60 <= j && j <= 69 ){
+                oDiv[j].style.left = (j - 60) * 60  + 'px';
+                oDiv[j].style.top = 6 * 60 + 'px';
+            }
+            if( 70 <= j && j <= 79 ){
+                oDiv[j].style.left = (j - 70) * 60  + 'px';
+                oDiv[j].style.top = 7 * 60 + 'px';
+            }
+            if( 80 <= j && j <= 89 ){
+                oDiv[j].style.left = (j - 80) * 60  + 'px';
+                oDiv[j].style.top = 8 * 60 + 'px';
+            }
+            if( 90 <= j && j <= 99 ){
+                oDiv[j].style.left = (j - 90) * 60  + 'px';
+                oDiv[j].style.top = 9 * 60 + 'px';
+            }
+        }
+
+    }
+</script>
+</body>
+</html>

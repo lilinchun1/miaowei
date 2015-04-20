@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<ul id="nav">
+    <li>
+        <h2>项目1</h2>
+        <ul>
+            <li>子项目1-1</li>
+            <li>子项目1-2</li>
+            <li>子项目1-3</li>
+        </ul>
+    </li>
+    <li>
+        <h2>项目2</h2>
+        <ul>
+            <li>子项目2-1</li>
+            <li>子项目2-2</li>
+            <li>子项目2-3</li>
+        </ul>
+    </li>
+    <li>
+        <h2>项目3</h2>
+        <ul>
+            <li>子项目3-1</li>
+            <li>子项目3-2</li>
+            <li>子项目3-3</li>
+        </ul>
+    </li>
+    <li>
+        <h2>项目4</h2>
+        <ul>
+            <li>子项目4-1</li>
+            <li>子项目4-2</li>
+            <li>子项目4-3</li>
+            <li>子项目4-4</li>
+        </ul>
+    </li>
+</ul>
+<script>
+    window.onload = function () {
+        var oUl1 = document.getElementById('nav');
+        var aUl = oUl1.getElementsByTagName('ul');
+        var len = aUl.length;
+        var aLi = null;
+        for(var i = 0; i < len; i++){
+            aLi = aUl[i].getElementsByTagName('li');
+            for(var j = 0; j < aLi.length; j++){
+                console.log( aLi[j].innerHTML);
+            }
+        }
+    }
+</script>
+</body>
+</html>
