@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<script>
+    window.onload = function () {
+        var oBtns = document.getElementsByTagName('button');
+        var _this = null;
+
+        //this 1:
+        /*for(var i = 0; i < oBtns.length; i++){
+            oBtns[i].onclick = function () {
+                this.style.backgroundColor = 'yellow';
+            }
+        }*/
+
+        //this 2:
+        /*for(var i = 0; i < oBtns.length; i++){
+            oBtns[i].onclick = function () {
+                _this = this;
+                fn1();
+            }
+        }
+        function fn1() {
+            _this.style.backgroundColor = 'red';
+        }*/
+
+        //this 3:
+        for(var i = 0; i < oBtns.length; i++){
+            oBtns[i].onclick = fn1;
+        }
+        function fn1() {
+            this.style.backgroundColor = 'blue';
+        }
+    }
+</script>
+</body>
+</html>

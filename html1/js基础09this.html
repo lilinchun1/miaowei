@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        li{
+            float: left;
+            margin-left: 20px;
+            position: relative;
+            width: 150px;
+            height: 200px;
+            background-color: #f1f1f1;
+            border: 1px solid #000;
+        }
+        div{
+            position: absolute;
+            top: 80px;
+            left: 35px;
+            width: 280px;
+            height: 200px;
+            background-color: red;
+            display: none;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>
+        <div></div>
+    </li>
+    <li>
+        <div></div>
+    </li> 
+    <li>
+        <div></div>
+    </li>
+    <li>
+        <div></div>
+    </li>
+</ul>
+<script>
+    window.onload = function () {
+        var aLi = document.getElementsByTagName('li');
+        var _this = null;
+        for(var i = 0; i < aLi.length; i++){
+            aLi[i].onmouseover = function () {
+                _this = this;
+                hover1();
+            };
+            aLi[i].onmouseout = function () {
+                 _this = this;
+                hover2();
+            };
+        }
+        function hover1() {
+            _this.getElementsByTagName('div')[0].style.display = 'block';
+        }
+        function hover2() {
+            _this.getElementsByTagName('div')[0].style.display = 'none';
+        }
+    }
+</script>
+</body>
+</html>
