@@ -129,16 +129,19 @@
         }
 
         //子标题点击效果
-        var oldLi = arrLi[0];
         for(var i = 0; i < arrLi.length; i++){
             arrLi[i].index = i;
             arrLi[i].onclick = function () {
-                oldLi.className = '';
-                oldLi = this;
-                this.className = 'actli';
-
+                if(this.className == 'actli'){
+                    this.className = '';
+                }
+                else{
+                    for(var i = 0; i < arrLi.length; i++){
+                        arrLi[i].className = '';
+                    }
+                    this.className = 'actli';
+                }
             }
-
         }
 
     }
