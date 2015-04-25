@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #wrap1,
+        #wrap2{
+            position: relative;
+            width: 500px;
+            height: 340px;
+            border: 1px solid #000;
+            font-size: 0;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+        }
+        p{
+            position: absolute;
+            height: 30px;
+            line-height: 30px;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(0,0,0,0.7);
+            font-size: 18px;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<button>上一组</button>
+<button>下一组</button>
+<div id="wrap1">
+    <img src="" alt=""/>
+    <p>*/*</p>
+</div>
+<div id="wrap2">
+    <img src="" alt=""/>
+    <p>*/*</p>
+</div>
+<script>
+    window.onload = function () {
+        var arrimg1 = [
+            '../img/IMG_0396.JPG',
+            '../img/IMG_0397.JPG',
+            '../img/IMG_0398.JPG',
+            '../img/IMG_0399.JPG',
+            '../img/IMG_0400.JPG',
+            '../img/IMG_0401.JPG'
+        ];
+        var arrimg2 = [
+            '../img/IMG_0396.JPG',
+            '../img/IMG_0397.JPG',
+            '../img/IMG_0398.JPG',
+            '../img/IMG_0399.JPG'
+        ];
+        var nub1 = arrimg1.length;
+        var nub2 = arrimg2.length;
+
+        var wp1 = document.getElementById('wrap1');
+        var img1 = wp1.getElementsByTagName('img')[0];
+        var p1 = wp1.getElementsByTagName('p')[0];
+
+        var wp2 = document.getElementById('wrap2');
+        var img2 = wp2.getElementsByTagName('img')[0];
+        var p2 = wp2.getElementsByTagName('p')[0];
+
+        var btn = document.getElementsByTagName('button');
+
+        //初始化
+        var sv1 = 0;
+        function show1() {
+            img1.src = arrimg1[sv1];
+            p1.innerHTML = sv1 + 1 + '/' + nub1;
+        }
+        show1();
+
+        var sv2 = 0;
+        function show2() {
+            img2.src = arrimg2[sv2];
+            p2.innerHTML = sv2 + 1 + '/' + nub2;
+        }
+        show2();
+
+        //图片点击轮播
+        wp1.onclick = function () {
+            if(sv1 == nub1 -1){
+                sv1 = 0;
+            }else{
+                sv1 ++;
+            }
+            show1();
+        };
+
+        wp2.onclick = function () {
+            if(sv2 == nub2 -1){
+                sv2 = 0;
+            }else{
+                sv2 ++;
+            }
+            show2();
+        };
+
+        //按钮点击事件
+        btn[0].onclick = function () {
+            if(sv1 == nub1 -1){
+                sv1 = 0;
+            }else{
+                sv1 ++;
+            }
+            show1();
+            if(sv2 == nub2 -1){
+                sv2 = 0;
+            }else{
+                sv2 ++;
+            }
+            show2();
+        };
+
+        btn[1].onclick = function () {
+            if(sv1 == 0){
+                sv1 = nub1 -1;
+            }else{
+                sv1 --;
+            }
+            show1();
+            if(sv2 == 0){
+                sv2 = nub2 -1;
+            }else{
+                sv2 --;
+            }
+            show2();
+        };
+    }
+</script>
+</body>
+</html>
