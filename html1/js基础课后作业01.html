@@ -108,6 +108,8 @@
         }
 
         //点击展开/收缩
+        /*
+        //默认展开
         for(var i = 0; i < oH2.length; i++ ){
             oH2[i].index = i;
             oH2[i].onOff = true;
@@ -126,7 +128,31 @@
                 }
 
             }
+        }*/
+
+        //默认收缩
+        for(var i = 0; i < oH2.length; i++){
+            oH2[i].index = i;
+            ulNb = i;
+            oUl[i].style.display = 'none';
+            oH2[i].onclick = function () {
+
+                if(oUl[this.index].style.display == 'none' ){
+                    for(var i = 0; i < oUl.length; i++){
+                        oUl[i].style.display = 'none';
+                        oH2[i].getElementsByTagName('span')[0].className = 'right';
+
+                    }
+                    oUl[this.index].style.display = 'block';
+                    this.getElementsByTagName('span')[0].className = 'up';
+                }
+                else{
+                    oUl[this.index].style.display = 'none';
+                    this.getElementsByTagName('span')[0].className = 'right';
+                }
+            }
         }
+
 
         //子标题点击效果
         for(var i = 0; i < arrLi.length; i++){
