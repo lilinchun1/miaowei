@@ -64,29 +64,19 @@
         var nub2 = arrimg2.length;
 
         var wp1 = document.getElementById('wrap1');
-        var img1 = wp1.getElementsByTagName('img')[0];
-        var p1 = wp1.getElementsByTagName('p')[0];
-
         var wp2 = document.getElementById('wrap2');
-        var img2 = wp2.getElementsByTagName('img')[0];
-        var p2 = wp2.getElementsByTagName('p')[0];
-
         var btn = document.getElementsByTagName('button');
 
         //初始化
         var sv1 = 0;
-        function show1() {
-            img1.src = arrimg1[sv1];
-            p1.innerHTML = sv1 + 1 + '/' + nub1;
-        }
-        show1();
-
         var sv2 = 0;
-        function show2() {
-            img2.src = arrimg2[sv2];
-            p2.innerHTML = sv2 + 1 + '/' + nub2;
+        function show(wrap, index, arr) {
+            wrap.getElementsByTagName('img')[0].src = arr[index];
+            wrap.getElementsByTagName('p')[0].innerHTML = index + 1 + '/' + arr.length;
         }
-        show2();
+        show(wp1, sv1, arrimg1);
+        show(wp2, sv2, arrimg2);
+
 
         //图片点击轮播
         wp1.onclick = function () {
@@ -95,7 +85,7 @@
             }else{
                 sv1 ++;
             }
-            show1();
+            show(wp1, sv1, arrimg1);
         };
 
         wp2.onclick = function () {
@@ -104,7 +94,7 @@
             }else{
                 sv2 ++;
             }
-            show2();
+            show(wp2, sv2, arrimg2);
         };
 
         //按钮点击事件
@@ -114,13 +104,13 @@
             }else{
                 sv1 ++;
             }
-            show1();
+           show(wp1, sv1, arrimg1);
             if(sv2 == nub2 -1){
                 sv2 = 0;
             }else{
                 sv2 ++;
             }
-            show2();
+            show(wp2, sv2, arrimg2);
         };
 
         btn[1].onclick = function () {
@@ -129,13 +119,13 @@
             }else{
                 sv1 --;
             }
-            show1();
+           show(wp1, sv1, arrimg1);
             if(sv2 == 0){
                 sv2 = nub2 -1;
             }else{
                 sv2 --;
             }
-            show2();
+            show(wp2, sv2, arrimg2);
         };
     }
 </script>
