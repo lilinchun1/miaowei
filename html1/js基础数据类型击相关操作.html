@@ -5,8 +5,10 @@
     <title>Document</title>
 </head>
 <body>
+<input id="input" type="text"/>
+<button id="btn">判断是否是数字</button>
 <script>
-  // 数字、字符串、布尔值、函数 、对象（object、[]、{}、null）、未定义（undefined）
+  // 数字（NaN）、字符串、布尔值、函数 、对象（object、[]、{}、null）、未定义（undefined）
 
       /*//判断数字是整数还是小数
       var a = '200.11';
@@ -28,8 +30,28 @@
     // ++ --                变成数字  number
     // < >                  变成布尔值 boolean  数字比较、字符串比较 不一样
     // !        !'123'               变成布尔值 bollean 把右边的数据类型转换成布尔值
+    // ==
 
 
+
+    //NaN  不是个数字的数字类型  是false  不等于自身
+
+    //判断一个值是否是数字
+    window.onload = function () {
+        var oInput = document.getElementById('input');
+        var oBtn = document.getElementById('btn');
+
+        oBtn.onclick = function () {
+            str = oInput.value;
+            if(isNaN(str)){
+                alert(str + '不是数字');
+            }
+            else{
+                alert(str + '是数字');
+
+            }
+        }
+    }
 </script>
 </body>
 </html>
