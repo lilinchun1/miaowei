@@ -6,15 +6,30 @@
 </head>
 <body>
 <script>
-    // 数字、字符串、布尔值、函数 、object
-    var s = ' miaowei';
-    console.log(typeof s);
-    console.log(s.charAt(3));
+  // 数字、字符串、布尔值、函数 、对象（object、[]、{}、null）、未定义（undefined）
 
-     function fn() {
-        alert(1);
-    }
-    console.log(fn)
+      /*//判断数字是整数还是小数
+      var a = '200.11';
+      if( parseInt(a) === parseFloat(a)){
+        alert('整数')
+      }
+      else{
+        alert('小数')
+      }*/
+
+  //数据类型转换(显式类型转换 or 强制类型转换）
+  //Number()
+  //parseInt()
+  //parseFloat()
+
+    //隐式类型转换
+    // +        200 + '3'         变成字符串 string
+    // - * / %  200 - '3'   变成数字  number
+    // ++ --                变成数字  number
+    // < >                  变成布尔值 boolean  数字比较、字符串比较 不一样
+    // !        !'123'               变成布尔值 bollean 把右边的数据类型转换成布尔值
+
+
 </script>
 </body>
 </html>
