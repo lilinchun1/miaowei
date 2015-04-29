@@ -40,6 +40,9 @@
         var aLi = oUl.getElementsByTagName('li');
 
         fn1(aLi[0]);
+        for(var i = 0; i < aLi.length; i++){
+            fn1(aLi[i]);
+        }
 
         function fn1(oLi) {
             var oInp = oLi.getElementsByTagName('input');
@@ -49,16 +52,16 @@
             var num1 = Number(oSt.innerHTML);
             var num2 = parseFloat(oEm.innerHTML);
 
-            oInp[1].onclick = function () {
-                num1 ++;
-                oSt.innerHTML = num1;
-                oSpan.innerHTML = num1 * num2 + '元';
-            };
             oInp[0].onclick = function () {
                 num1 --;
                 if(num1 < 0){
                     num1 = 0;
                 }
+                oSt.innerHTML = num1;
+                oSpan.innerHTML = num1 * num2 + '元';
+            };
+            oInp[1].onclick = function () {
+                num1 ++;
                 oSt.innerHTML = num1;
                 oSpan.innerHTML = num1 * num2 + '元';
             };
