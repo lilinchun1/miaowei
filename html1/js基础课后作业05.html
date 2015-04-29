@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        li{
+            padding: 5px 30px;
+            line-height: 30px;
+            border-bottom: 1px solid #000;
+        }
+
+        li input{
+            width: 200px;
+        }
+        .hidden{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<ul id="list">
+    <li>
+        <span>Lorem ipsum dolor.</span>
+        <button>编辑</button>
+        <input class="hidden" type="text"/>
+        <button class="hidden">保存</button>
+        <button class="hidden">取消</button>
+    </li>
+    <li>
+        <span>Lorem ipsum dolor.</span>
+        <button>编辑</button>
+        <input class="hidden" type="text"/>
+        <button class="hidden">保存</button>
+        <button class="hidden">取消</button>
+    </li>
+    <li>
+        <span>Lorem ipsum dolor.</span>
+        <button>编辑</button>
+        <input class="hidden" type="text"/>
+        <button class="hidden">保存</button>
+        <button class="hidden">取消</button>
+    </li>
+    <li>
+        <span>Lorem ipsum dolor.</span>
+        <button>编辑</button>
+        <input class="hidden" type="text"/>
+        <button class="hidden">保存</button>
+        <button class="hidden">取消</button>
+    </li>
+    <li>
+        <span>Lorem ipsum dolor.</span>
+        <button>编辑</button>
+        <input class="hidden" type="text"/>
+        <button class="hidden">保存</button>
+        <button class="hidden">取消</button>
+    </li>
+</ul>
+<script>
+    window.onload = function () {
+        var oUl = document.getElementById('list');
+        var oLi = oUl.getElementsByTagName('li');
+        for(var i = 0; i < oLi.length; i++){
+            fn1(oLi[i]);
+        }
+
+    };
+    function fn1(aLi) {
+        var aSpan = aLi.getElementsByTagName('span');
+        var aBtn = aLi.getElementsByTagName('button');
+        var aInp = aLi.getElementsByTagName('input');
+
+        aBtn[0].onclick = function () {
+            aSpan[0].style.display = 'none';
+            aBtn[0].style.display = 'none';
+            aInp[0].style.display = 'inline-block';
+            aBtn[1].style.display = 'inline-block';
+            aBtn[2].style.display = 'inline-block';
+            aInp[0].value = aSpan[0].innerHTML;
+        };
+        aBtn[1].onclick = function () {
+            aSpan[0].style.display = 'inline-block';
+            aBtn[0].style.display = 'inline-block';
+            aInp[0].style.display = 'none';
+            aBtn[1].style.display = 'none';
+            aBtn[2].style.display = 'none';
+            aSpan[0].innerHTML = aInp[0].value;
+        };
+        aBtn[2].onclick = function () {
+            aSpan[0].style.display = 'inline-block';
+            aBtn[0].style.display = 'inline-block';
+            aInp[0].style.display = 'none';
+            aBtn[1].style.display = 'none';
+            aBtn[2].style.display = 'none';
+        }
+    }
+</script>
+</body>
+</html>
