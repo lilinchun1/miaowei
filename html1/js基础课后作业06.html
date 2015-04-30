@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style-type: none;
+        }
+        #wrap{
+            position: relative;
+            width: 400px;
+        }
+        #nav li{
+            height: 30px;
+            line-height: 30px;
+            display: inline-block;
+            border-bottom: 1px solid #000;
+        }
+        .con{
+            position: absolute;
+            top: 35px;
+            left: 0;
+            width: 100%;
+            display: none;
+            border: 1px solid #000;
+        }
+        .active{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <ul id="nav">
+        <li>项目1</li>
+        <li>项目2</li>
+        <li>项目3</li>
+    </ul>
+    <div class="con active">
+        <ul>
+            <li>1</li>
+        </ul>
+    </div>
+    <div class="con">
+        <ul>
+            <li>2</li>
+        </ul>
+    </div>
+    <div class="con">
+        <ul>
+            <li>3</li>
+        </ul>
+    </div>
+</div>
+<script>
+    window.onload = function () {
+        var json1 = {
+            "tab1":{
+                "tetle":[
+                    "习近平:中国同阿尔及利亚是兄弟是朋友",
+                    "足球改革领导小组成立 副总理刘延东任组长",
+                    "社科院:中国5A级景区门票平均价格112元",
+                    "四川死刑嫌犯逃脱 50岁警察追寻无果气晕(图)",
+                    "杭州公交车纵火案凶手包来旭被执行死刑(图)",
+                    "18个被连夜撤销全国劳模多为总裁总经理",
+                    "沪指月涨幅18.51% 两桶油今日双双跌超2%",
+                    "媒体:程维高之子外逃加拿大 正申请难民身份",
+                    "海南退休厅官骚扰企业女职工 企业敢怒不敢言",
+                    "中国摊贩边卖香蕉边炒股照片走红海外(图)"
+                ],
+                "image":[
+                    "../img/IMG_0396.JPG",
+                    "../img/IMG_0397.JPG",
+                    "../img/IMG_0398.JPG",
+                    "../img/IMG_0399.JPG",
+                    "../img/IMG_0400.JPG",
+                    "../img/IMG_0401.JPG",
+                    "../img/IMG_0402.JPG",
+                    "../img/IMG_0403.JPG",
+                    "../img/IMG_0404.JPG",
+                    "../img/IMG_0405.JPG"
+                ]
+            },
+            "tab2":{
+                "tetle":[
+                    "2习近平:中国同阿尔及利亚是兄弟是朋友",
+                    "2足球改革领导小组成立 副总理刘延东任组长",
+                    "2社科院:中国5A级景区门票平均价格112元",
+                    "2四川死刑嫌犯逃脱 50岁警察追寻无果气晕(图)",
+                    "2杭州公交车纵火案凶手包来旭被执行死刑(图)",
+                    "218个被连夜撤销全国劳模多为总裁总经理",
+                    "2沪指月涨幅18.51% 两桶油今日双双跌超2%",
+                    "2媒体:程维高之子外逃加拿大 正申请难民身份",
+                    "2海南退休厅官骚扰企业女职工 企业敢怒不敢言",
+                    "2中国摊贩边卖香蕉边炒股照片走红海外(图)"
+                ],
+                "image":[
+                    "../img/IMG_0396.JPG",
+                    "../img/IMG_0397.JPG",
+                    "../img/IMG_0398.JPG",
+                    "../img/IMG_0399.JPG",
+                    "../img/IMG_0400.JPG",
+                    "../img/IMG_0401.JPG",
+                    "../img/IMG_0402.JPG",
+                    "../img/IMG_0403.JPG",
+                    "../img/IMG_0404.JPG",
+                    "../img/IMG_0405.JPG"
+                ]
+            },
+            "tab3":{
+                "tetle":[
+                    "3习近平:中国同阿尔及利亚是兄弟是朋友",
+                    "3足球改革领导小组成立 副总理刘延东任组长",
+                    "3社科院:中国5A级景区门票平均价格112元",
+                    "3四川死刑嫌犯逃脱 50岁警察追寻无果气晕(图)",
+                    "3杭州公交车纵火案凶手包来旭被执行死刑(图)",
+                    "318个被连夜撤销全国劳模多为总裁总经理",
+                    "3沪指月涨幅18.51% 两桶油今日双双跌超2%",
+                    "3媒体:程维高之子外逃加拿大 正申请难民身份",
+                    "3海南退休厅官骚扰企业女职工 企业敢怒不敢言",
+                    "3中国摊贩边卖香蕉边炒股照片走红海外(图)"
+                ],
+                "image":[
+                    "../img/IMG_0396.JPG",
+                    "../img/IMG_0397.JPG",
+                    "../img/IMG_0398.JPG",
+                    "../img/IMG_0399.JPG",
+                    "../img/IMG_0400.JPG",
+                    "../img/IMG_0401.JPG",
+                    "../img/IMG_0402.JPG",
+                    "../img/IMG_0403.JPG",
+                    "../img/IMG_0404.JPG",
+                    "../img/IMG_0405.JPG"
+                ]
+            }
+        }
+    }
+</script>
+</body>
+</html>
