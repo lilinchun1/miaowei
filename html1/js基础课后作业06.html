@@ -13,41 +13,108 @@
         }
         #wrap{
             position: relative;
-            width: 400px;
+            padding: 10px;
+            width: 290px;
+            background-color: #dee7e7;
+        }
+        #nav{
+            height: 38px;
+            border-bottom: 1px solid #94bdd6;
+            overflow: hidden;
+            text-align: right;
+            font-size: 0;
         }
         #nav li{
-            height: 30px;
-            line-height: 30px;
+            display: inline-block;
+            margin-top: 12px;
+            margin-left: -1px;
+            width: 36px;
+            height: 26px;
+            line-height: 26px;
+            color: #185273;
+            font-size: 12px;
+            border: 1px solid #94bdd6;
+            text-align: center;
+        }
+        #nav .active{
+            background-color: #ffffff;
+            color: #000;
+            font-weight: bold;
+        }
+        .con {
+            display: none;
+        }
+        .con.active{
+            display: block;
+        }
+        .con span{
+            margin-left: 5px;
+            width: 18px;
+            height: 14px;
+            line-height: 14px;
+            text-align: center;
+            background-color: #29739c;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 10px;
             display: inline-block;
         }
-        .con{
-            position: absolute;
-            top: 35px;
-            left: 0;
-            width: 100%;
+        .con li{
+            margin-bottom: 2px;
+            height: 28px;
+            line-height: 28px;
+            border-bottom: 1px dashed #fff;
+        }
+        .con li p{
+            margin-left: 10px;
+            font-size: 12px;
+            display: inline-block;
+        }
+        .con li img{
             display: none;
-            border: 1px solid #000;
         }
-        .con li {
-            height: 30px;
-            line-height: 30px;
-            border-bottom: 1px solid #000;
-
+        .con .act {
+            height: 80px;
+            background: #ffffff;
         }
-        .active{
-            display: block;
+        .con .act img{
+            margin-top: 8px;
+            width: 84px;
+            height: 64px;
+            border: 1px solid #94bdd6;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .con .act p{
+            width: 50%;
+            line-height: 1.5;
+            color: #185273;
         }
     </style>
 </head>
 <body>
 <div id="wrap">
     <ul id="nav">
-        <li>项目1</li>
+        <li class="active">项目1</li>
         <li>项目2</li>
         <li>项目3</li>
     </ul>
     <div class="con active">
         <ul>
+            <!--<li>
+                <span>1</span>
+                <img src="../img/IMG_0396.JPG" alt=""/>
+                <p>
+                    习近平:中国同阿尔及利亚是兄弟是朋友
+                </p>
+            </li>
+            <li class="act">
+                <span>1</span>
+                <img src="../img/IMG_0396.JPG" alt=""/>
+                <p>
+                    习近平:中国同阿尔及利亚是兄弟是朋友
+                </p>
+            </li>-->
         </ul>
     </div>
     <div class="con">
@@ -59,11 +126,12 @@
         </ul>
     </div>
 </div>
+
 <script>
     window.onload = function () {
         var json1 = {
-            "tab1":{
-                "tetle":[
+            "tab1": {
+                "tetle": [
                     "习近平:中国同阿尔及利亚是兄弟是朋友",
                     "足球改革领导小组成立 副总理刘延东任组长",
                     "社科院:中国5A级景区门票平均价格112元",
@@ -75,7 +143,7 @@
                     "海南退休厅官骚扰企业女职工 企业敢怒不敢言",
                     "中国摊贩边卖香蕉边炒股照片走红海外(图)"
                 ],
-                "image":[
+                "image": [
                     "../img/IMG_0396.JPG",
                     "../img/IMG_0397.JPG",
                     "../img/IMG_0398.JPG",
@@ -88,8 +156,8 @@
                     "../img/IMG_0405.JPG"
                 ]
             },
-            "tab2":{
-                "tetle":[
+            "tab2": {
+                "tetle": [
                     "2习近平:中国同阿尔及利亚是兄弟是朋友",
                     "2足球改革领导小组成立 副总理刘延东任组长",
                     "2社科院:中国5A级景区门票平均价格112元",
@@ -101,7 +169,7 @@
                     "2海南退休厅官骚扰企业女职工 企业敢怒不敢言",
                     "2中国摊贩边卖香蕉边炒股照片走红海外(图)"
                 ],
-                "image":[
+                "image": [
                     "../img/IMG_0396.JPG",
                     "../img/IMG_0397.JPG",
                     "../img/IMG_0398.JPG",
@@ -114,8 +182,8 @@
                     "../img/IMG_0405.JPG"
                 ]
             },
-            "tab3":{
-                "tetle":[
+            "tab3": {
+                "tetle": [
                     "3习近平:中国同阿尔及利亚是兄弟是朋友",
                     "3足球改革领导小组成立 副总理刘延东任组长",
                     "3社科院:中国5A级景区门票平均价格112元",
@@ -127,7 +195,7 @@
                     "3海南退休厅官骚扰企业女职工 企业敢怒不敢言",
                     "3中国摊贩边卖香蕉边炒股照片走红海外(图)"
                 ],
-                "image":[
+                "image": [
                     "../img/IMG_0396.JPG",
                     "../img/IMG_0397.JPG",
                     "../img/IMG_0398.JPG",
@@ -141,41 +209,65 @@
                 ]
             }
         };
-        var wrap = document.getElementById('wrap');
-        var nav = document.getElementById('nav');
-        var navLi = nav.getElementsByTagName('li');
-        var oDiv = wrap.getElementsByTagName('div');
+        var oWrap = document.getElementById('wrap');
 
-        //初始化
-
-        for(var i = 0; i < oDiv.length; i++){
-            for(var j = 0; j < 10; j++){
-                oDiv[i].getElementsByTagName('ul')[0].innerHTML += '<li>' + json1['tab'+ (i + 1)]['tetle'][j] + '</li>';
-            }
-        }
-
-
-        //点击切换
-
-        tab(navLi,oDiv);
-
-        //鼠标滑过样式
-
-
+        tab(oWrap,json1);
     };
 
-    function tab(nav,content) {
-        for(var i = 0; i < nav.length; i++){
-            nav[i].index = i;
-            nav[i].onclick = function () {
-                for(var j = 0; j < nav.length; j++){
-                    content[j].className = "con";
-                    nav[j].style.backgroundColor = '';
+
+
+    //初始化
+    function initialize(wrap, json, num) {
+        var conWrap = wrap.getElementsByTagName('div');
+        var oUl = conWrap[num].getElementsByTagName('ul')[0];
+        var arrLi = '';
+        for(var i = 0; i < 10; i++){
+            arrLi += '<li><span>'+ (i+1) + '</span><img src="' + json['tab'+ (num + 1)]['image'][i] + '" alt=""/><p>' + json['tab'+ (num + 1)]['tetle'][i] +'</p></li>';
+        }
+        oUl.innerHTML = arrLi;
+
+    }
+
+    //tab切换
+    function tab(wrap, json) {
+        var oNav = wrap.getElementsByTagName('ul')[0];
+        var navLi = oNav.getElementsByTagName('li');
+        var conWrap = wrap.getElementsByTagName('div');
+
+        for(var i = 0; i < navLi.length; i++){
+
+            initialize(wrap, json, i);
+
+            //点击事件
+            navLi[i].index= i;
+            navLi[i].onclick = function () {
+                for(var i = 0; i < conWrap.length; i++){
+                    conWrap[i].className = 'con';
+                    navLi[i].className = '';
                 }
-                this.style.backgroundColor = '#ccc';
-                content[this.index].className = "con active";
+                conWrap[this.index].className = 'con active';
+                this.className = 'active';
+            };
+
+        }
+
+        hover1(wrap);
+    }
+
+    //鼠标滑过效果
+    function hover1(wrap) {
+        var aLi = wrap.getElementsByTagName('li');
+        var num = aLi.length;
+        console.log(aLi);
+        for(var i = 0; i < num; i++){
+            aLi[i].onmouseover = function () {
+                this.className = 'act';
+            };
+            aLi[i].onmouseout = function () {
+                this.className = '';
             }
         }
+
     }
 </script>
 </body>
