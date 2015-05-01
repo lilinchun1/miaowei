@@ -99,31 +99,30 @@
         <li>项目2</li>
         <li>项目3</li>
     </ul>
-    <div class="con active">
-        <ul>
-            <!--<li>
-                <span>1</span>
-                <img src="../img/IMG_0396.JPG" alt=""/>
-                <p>
-                    习近平:中国同阿尔及利亚是兄弟是朋友
-                </p>
-            </li>
-            <li class="act">
-                <span>1</span>
-                <img src="../img/IMG_0396.JPG" alt=""/>
-                <p>
-                    习近平:中国同阿尔及利亚是兄弟是朋友
-                </p>
-            </li>-->
-        </ul>
-    </div>
-    <div class="con">
-        <ul>
-        </ul>
-    </div>
-    <div class="con">
-        <ul>
-        </ul>
+    <div id="cont">
+            <ul class="con active">
+                <!--<li>
+                    <span>1</span>
+                    <img src="../img/IMG_0396.JPG" alt=""/>
+                    <p>
+                        习近平:中国同阿尔及利亚是兄弟是朋友
+                    </p>
+                </li>
+                <li class="act">
+                    <span>1</span>
+                    <img src="../img/IMG_0396.JPG" alt=""/>
+                    <p>
+                        习近平:中国同阿尔及利亚是兄弟是朋友
+                    </p>
+                </li>-->
+                1
+            </ul>
+            <ul class="con">
+                2
+            </ul>
+            <ul class="con">
+                3
+            </ul>
     </div>
 </div>
 
@@ -210,33 +209,33 @@
             }
         };
         var oWrap = document.getElementById('wrap');
+        var oCont = document.getElementById('cont');
 
-        tab(oWrap,json1);
+        tab(oWrap, oCont, json1);
     };
 
 
 
     //初始化
-    function initialize(wrap, json, num) {
-        var conWrap = wrap.getElementsByTagName('div');
-        var oUl = conWrap[num].getElementsByTagName('ul')[0];
+    function initialize(cont, json, num) {
+        var oUl = cont.getElementsByTagName('ul');
         var arrLi = '';
         for(var i = 0; i < 10; i++){
             arrLi += '<li><span>'+ (i+1) + '</span><img src="' + json['tab'+ (num + 1)]['image'][i] + '" alt=""/><p>' + json['tab'+ (num + 1)]['tetle'][i] +'</p></li>';
         }
-        oUl.innerHTML = arrLi;
+        oUl[num].innerHTML = arrLi;
 
     }
 
     //tab切换
-    function tab(wrap, json) {
+    function tab(wrap, cont, json) {
         var oNav = wrap.getElementsByTagName('ul')[0];
         var navLi = oNav.getElementsByTagName('li');
-        var conWrap = wrap.getElementsByTagName('div');
-
+        var conWrap = cont.getElementsByTagName('ul');
+        var aLi = cont.getElementsByTagName('li');
         for(var i = 0; i < navLi.length; i++){
 
-            initialize(wrap, json, i);
+           initialize(cont, json, i);
 
             //点击事件
             navLi[i].index= i;
@@ -247,25 +246,27 @@
                 }
                 conWrap[this.index].className = 'con active';
                 this.className = 'active';
+                aLi[0].className = aLi[10].className = aLi[20].className = 'act';
+
             };
 
         }
 
-        hover1(wrap);
+        hover1(cont);
     }
 
     //鼠标滑过效果
-    function hover1(wrap) {
-        var aLi = wrap.getElementsByTagName('li');
+    function hover1(cont) {
+        var aLi = cont.getElementsByTagName('li');
         var num = aLi.length;
-        console.log(aLi);
         for(var i = 0; i < num; i++){
+
             aLi[i].onmouseover = function () {
+                for(var i = 0; i < aLi.length; i++){
+                    aLi[i].className = '';
+                }
                 this.className = 'act';
             };
-            aLi[i].onmouseout = function () {
-                this.className = '';
-            }
         }
 
     }
