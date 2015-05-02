@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        li{
+            list-style-type: none;
+        }
+        #wrap{
+            padding: 8px;
+            width: 970px;
+            height: 345px;
+            border-top: 1px solid #000;
+            background-color: #e7e7e7;
+        }
+        #nav{
+            float: left;
+            width: 148px;
+            border-left: 1px solid #c6c6c6;
+        }
+        #nav li{
+            width: 148px;
+            height: 82px;
+            line-height: 82px;
+            text-align: center;
+            border-bottom: 1px solid #c6c6c6;
+            cursor: pointer;
+        }
+        #nav li:nth-of-type(1){
+            border-top: 1px solid #c6c6c6;
+        }
+        #nav .active{
+            background-color: #ffffff;
+         }
+        #cont{
+            position: relative;
+            float: left;
+            width: 806px;
+            height: 328px;
+            border: 1px solid #c6c6c6;
+        }
+        #cont img{
+            width: 100%;
+            height: 100%;
+        }
+        #cont ul {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        #cont li{
+            float: left;
+            margin-left: 1px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            color: #ffffff;
+            background-color: rgba(0,0,0,.6);
+        }
+        #cont .active{
+            background-color: rgba(204,0,0,.5);
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <ul id="nav">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div id="cont">
+        <img src="" alt=""/>
+        <ul>
+            <!--<li>最热购物</li>
+            <li>商城特惠</li>
+            <li>名品推荐</li>
+            <li>缤纷活动</li>-->
+        </ul>
+    </div>
+</div>
+<script>
+    window.onload = function () {
+        var json1 = {
+            "tab0": {
+                "navtt":"最热购物",
+                "tetle": [
+                    "习近平:中国同",
+                    "足球改革领导小组",
+                    "社科院:中国",
+                    "四川死刑嫌",
+                    "中国摊贩边卖"
+                ],
+                "image": [
+                    "../img/IMG_0401.JPG",
+                    "../img/IMG_0396.JPG",
+                    "../img/IMG_0397.JPG",
+                    "../img/IMG_0398.JPG",
+                    "../img/IMG_0399.JPG"
+                ]
+            },
+            "tab1": {
+                "navtt":"商城特惠",
+
+                "tetle": [
+                    "2习近平:中国",
+                    "2足球改革领",
+                    "2社科院:中国5",
+                    "2中国摊贩边卖"
+                ],
+                "image": [
+                    "../img/IMG_0400.JPG",
+                    "../img/IMG_0396.JPG",
+                    "../img/IMG_0397.JPG",
+                    "../img/IMG_0398.JPG"
+                ]
+            },
+            "tab2": {
+                "navtt":"名品推荐",
+
+                "tetle": [
+                    "3习近平:中国",
+                    "3足球改革领导",
+                    "3足球改革领导2",
+                    "3中国摊贩"
+                ],
+                "image": [
+                    "../img/IMG_0399.JPG",
+                    "../img/IMG_0400.JPG",
+                    "../img/IMG_0401.JPG",
+                    "../img/IMG_0402.JPG"
+                ]
+            },
+            "tab3": {
+                "navtt":"缤纷活动",
+
+                "tetle": [
+                    "4习近平:中国",
+                    "4足球改革领导小",
+                    "4中国摊贩边"
+                ],
+                "image": [
+                    "../img/IMG_0403.JPG",
+                    "../img/IMG_0404.JPG",
+                    "../img/IMG_0405.JPG"
+                ]
+            }
+        };
+        var oNav = document.getElementById('nav');
+        var oCont = document.getElementById('cont');
+
+        tab(oNav, oCont, json1);
+    };
+
+    function tab(nav, cont, json) {
+        var aNavLi = nav.getElementsByTagName('li');
+        var aImg =  cont.getElementsByTagName('img')[0];
+        var aContUl = cont.getElementsByTagName('ul')[0];
+        var aContLi = cont.getElementsByTagName('li');
+
+        //初始化
+        for(var j = 0; j < aNavLi.length; j++){
+            aNavLi[j].innerHTML = json['tab'+(j)]['navtt'];
+        }
+        show(0);
+
+        function show(index) {
+            var arr = '';
+            var ttnum = json['tab'+ index]['tetle'].length;
+            aImg.src = json['tab'+ index]['image'][0];
+            for(var i = 0; i < ttnum; i++){
+                arr += '<li>' + json['tab'+ index]['tetle'][i] + '</li>';
+
+            }
+            aContUl.innerHTML = arr;
+            for(var j = 0; j < ttnum; j++){
+                aContLi[0].className = 'active';
+                aContLi[j].style.width = cont.clientWidth / json['tab'+ index]['tetle'].length - 1  + 'px';
+            }
+            ontab(index);
+        }
+
+        //点击导航切换频道
+        for(var i = 0; i < aNavLi.length; i++){
+            aNavLi[i].index = i;
+            aNavLi[i].onclick = function () {
+                for(var i = 0; i < aNavLi.length; i++){
+                    aNavLi[i].className = '';
+                }
+                this.className = 'active';
+               show(this.index);
+            };
+        }
+
+        //点击标题 切换图
+        function ontab(num){
+            for(var i = 0; i < aContLi.length; i++){
+                aContLi[i].index = i;
+                aContLi[i].onclick = function () {
+                    for(var i = 0; i < aContLi.length; i++){
+                        aContLi[i].className = '';
+                    }
+                    this.className = 'active';
+                    aImg.src = json['tab'+ num]['image'][this.index];
+                    console.log(aImg.src)
+                }
+            }
+        }
+
+
+
+    }
+</script>
+</body>
+</html>
