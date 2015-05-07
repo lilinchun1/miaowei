@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        b{
+            line-height: 30px;
+            float: left;
+        }
+        li{
+            margin-right: 15px;
+            width: 30px;
+            height: 30px;
+            border: 1px solid #c6c6c6;
+            float: left;
+            list-style-type: none;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <b>总体评价：</b>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <span></span>
+</div>
+<script>
+    window.onload = function () {
+        var oWrap = document.getElementById('wrap');
+        star(oWrap)
+    };
+    function star(wrap) {
+        var aLi = wrap.getElementsByTagName('li');
+        var aSpan = wrap.getElementsByTagName('span')[0];
+
+        for(var i = 0; i < aLi.length; i++){
+            aLi[i].index = i;
+            aLi[i].onmouseover = function () {
+                console.log(this.index)
+                bs(this.index);
+            }
+        }
+
+        function bs(num) {
+            for(var i = 0; i < num + 1; i++){
+                aLi[i].style.backgroundColor = 'red';
+            }
+        }
+
+    }
+</script>
+</body>
+</html>
