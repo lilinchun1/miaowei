@@ -69,6 +69,7 @@
                     this.style.backgroundColor = '#fff';
                     opInp.checked = false;
                 }
+                ckall();
             };
             aInp[i].onclick = function (e) {
                 e = window.event || e;
@@ -82,6 +83,7 @@
                     aLi[this.index].style.backgroundColor = '#fff';
                     opInp.checked = false;
                 }
+                ckall();
             }
 
         }
@@ -91,6 +93,15 @@
                 for(var i = 0; i < aInp.length; i++){
                     aInp[i].checked = true;
                 }
+            }
+        };
+
+        function ckall() {
+            for(var i = 0; i < aInp.length; i++){
+                if(aInp[i] == false){
+                    opInp.checked = false;
+                }
+
             }
         }
     }
