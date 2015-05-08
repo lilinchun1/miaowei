@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wp{
+            width: 500px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+        }
+        li{
+            padding: 0 10px;
+            height: 30px;
+            line-height: 30px;
+            list-style-type: none;
+        }
+        li:hover{
+            background-color: #cccccc;
+        }
+        p{
+            padding: 0 10px;
+            height: 30px;
+            line-height: 30px;
+            border-top: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap" class="wp">
+    <ul>
+        <li><input type="checkbox" name="" id=""/><span>选项1</span></li>
+        <li><input type="checkbox" name="" id=""/><span>选项2</span></li>
+        <li><input type="checkbox" name="" id=""/><span>选项3</span></li>
+        <li><input type="checkbox" name="" id=""/><span>选项4</span></li>
+        <li><input type="checkbox" name="" id=""/><span>选项5</span></li>
+        <li><input type="checkbox" name="" id=""/><span>选项6</span></li>
+    </ul>
+    <p>
+        <input type="checkbox" name="" id=""/><span>全选</span>
+    </p>
+</div>
+<script>
+    window.onload = function () {
+        var oWrap = document.getElementById('wrap');
+        ckbox(oWrap);
+    };
+    function ckbox(wrap) {
+        var oUl = wrap.getElementsByTagName('ul')[0];
+        var aLi = oUl.getElementsByTagName('li');
+        var aInp = oUl.getElementsByTagName('input');
+        var oP = wrap.getElementsByTagName('p')[0];
+        var opInp = oP.getElementsByTagName('input')[0];
+
+        for(var i = 0; i < aLi.length; i++){
+            aLi[i].index = i;
+            aInp[i].index = i;
+            aLi[i].onclick = function () {
+                if(this.getElementsByTagName('input')[0].checked == false){
+                    this.getElementsByTagName('input')[0].checked = true;
+                    this.style.backgroundColor = '#ccc';
+                }
+                else{
+                    this.getElementsByTagName('input')[0].checked = false;
+                    this.style.backgroundColor = '#fff';
+                    opInp.checked = false;
+                }
+            };
+            aInp[i].onclick = function (e) {
+                e = window.event || e;
+                e.stopPropagation?(e.stopPropagation()):(e.cancelBubble = true);
+                if(this.checked == true){
+                    this.checked = true;
+                    aLi[this.index].style.backgroundColor = '#ccc';
+                }
+                else{
+                    this.checked = false;
+                    aLi[this.index].style.backgroundColor = '#fff';
+                    opInp.checked = false;
+                }
+            }
+
+        }
+
+        opInp.onclick = function () {
+            if(this.checked == true){
+                for(var i = 0; i < aInp.length; i++){
+                    aInp[i].checked = true;
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

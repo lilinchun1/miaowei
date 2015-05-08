@@ -8,6 +8,10 @@
             margin: 0;
             padding: 0;
         }
+        div{
+            width: 100%;
+            overflow: hidden;
+        }
         b,
         span{
             line-height: 30px;
@@ -39,10 +43,24 @@
     </ul>
     <span></span>
 </div>
+<div id="wrap2">
+    <b>总体评价：</b>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <span></span>
+</div>
 <script>
     window.onload = function () {
         var oWrap = document.getElementById('wrap');
-        star(oWrap)
+        var oWrap2 = document.getElementById('wrap2');
+
+        star(oWrap);
+        star(oWrap2);
     };
     function star(wrap) {
         var oUl = wrap.getElementsByTagName('ul')[0];
