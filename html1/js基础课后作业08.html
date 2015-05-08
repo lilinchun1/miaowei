@@ -8,9 +8,14 @@
             margin: 0;
             padding: 0;
         }
-        b{
+        b,
+        span{
             line-height: 30px;
             float: left;
+        }
+        ul{
+            float: left;
+            height: 32px;
         }
         li{
             margin-right: 15px;
@@ -40,20 +45,77 @@
         star(oWrap)
     };
     function star(wrap) {
+        var oUl = wrap.getElementsByTagName('ul')[0];
         var aLi = wrap.getElementsByTagName('li');
         var aSpan = wrap.getElementsByTagName('span')[0];
 
         for(var i = 0; i < aLi.length; i++){
             aLi[i].index = i;
+            var oldNum = null;
+            var clickNum = null;
             aLi[i].onmouseover = function () {
-                console.log(this.index)
-                bs(this.index);
+                oldNum = this.index;
+                bsW();
+                bsR(oldNum);
+                wz(oldNum);
+            };
+
+            aLi[i].onclick = function () {
+                clickNum = this.index;
+            };
+
+        }
+
+        oUl.onmouseout = function () {
+            bsW();
+            aSpan.innerHTML = '';
+            if(clickNum !== null){
+                bsR(clickNum);
+                wz(clickNum);
+            }
+        };
+
+        //利用onmousemove事件优先的方法来阻止子元素中出发onmouseout
+        oUl.onmousemove = function () {
+            bsR(oldNum);
+            wz(oldNum);
+        };
+
+        function bsR(num) {
+            for(var i = 0; i < num + 1; i++){
+                if(num < 2){
+                    aLi[i].style.backgroundColor = '#ccc';
+
+                }
+                else{
+                    aLi[i].style.backgroundColor = 'red';
+                }
             }
         }
 
-        function bs(num) {
-            for(var i = 0; i < num + 1; i++){
-                aLi[i].style.backgroundColor = 'red';
+        function bsW() {
+            for(var i = 0; i < aLi.length; i++){
+                aLi[i].style.backgroundColor = '#fff';
+            }
+        }
+
+        function wz(oldNum) {
+            switch (oldNum){
+                case 0:
+                    aSpan.innerHTML = '很差';
+                    break;
+                case 1:
+                    aSpan.innerHTML = '较差';
+                    break;
+                case 2:
+                    aSpan.innerHTML = '还行';
+                    break;
+                case 3:
+                    aSpan.innerHTML = '推荐';
+                    break;
+                case 4:
+                    aSpan.innerHTML = '力荐';
+                    break;
             }
         }
 
