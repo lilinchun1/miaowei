@@ -57,6 +57,8 @@
         var opInp = oP.getElementsByTagName('input')[0];
 
         for(var i = 0; i < aLi.length; i++){
+            aInp[i].checked = false;
+            //ckbox点击
             aLi[i].index = i;
             aInp[i].index = i;
             aLi[i].onclick = function () {
@@ -67,10 +69,11 @@
                 else{
                     this.getElementsByTagName('input')[0].checked = false;
                     this.style.backgroundColor = '#fff';
-                    opInp.checked = false;
+                    //opInp.checked = false;
                 }
-                ckall();
+                cknb();
             };
+            //li点击
             aInp[i].onclick = function (e) {
                 e = window.event || e;
                 e.stopPropagation?(e.stopPropagation()):(e.cancelBubble = true);
@@ -81,27 +84,39 @@
                 else{
                     this.checked = false;
                     aLi[this.index].style.backgroundColor = '#fff';
-                    opInp.checked = false;
+                   // opInp.checked = false;
                 }
-                ckall();
+                cknb();
             }
 
         }
 
+        //全选ckbox点击
         opInp.onclick = function () {
             if(this.checked == true){
                 for(var i = 0; i < aInp.length; i++){
                     aInp[i].checked = true;
                 }
+            }else{
+                for(var i = 0; i < aInp.length; i++){
+                    aInp[i].checked = false;
+                }
             }
         };
 
-        function ckall() {
+        //判断是否全选
+        function cknb() {
+            var j =0;
             for(var i = 0; i < aInp.length; i++){
-                if(aInp[i] == false){
-                    opInp.checked = false;
+                if(aInp[i].checked == true){
+                    j++;
                 }
-
+            }
+            if(j == aInp.length){
+                opInp.checked = true;
+            }
+            else if(j < aInp.length){
+                opInp.checked = false;
             }
         }
     }

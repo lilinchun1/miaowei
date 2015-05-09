@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<input type="checkbox" name="" id=""/>
+<input type="checkbox" name="" id=""/>
+<input type="checkbox" name="" id=""/>
+<input type="checkbox" name="" id=""/>
+<input type="checkbox" name="" id=""/>
+<script>
+    window.onload = function () {
+        var aInp = document.getElementsByTagName('input');
+        var b =  false;
+        for(var i = 0; i < aInp.length; i++){
+            aInp[i].checked = false;
+            aInp[i].onclick = function () {
+                for(var i = 0; i < aInp.length; i++){
+                    if(aInp[i].checked == true){
+                       b = true;
+                        return b;
+                    }
+                }
+                console.log(b)
+            }
+        }
+    }
+</script>
+</body>
+</html>
