@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .a{
+            background-image: url();}
+    </style>
+</head>
+<body>
+<button>换背景吧</button>
+<button>停</button>
+<img src="" alt=""/>
+<script>
+    /*
+    *   定时器：时间概念
+    *   var timer = setInterval(函数， 毫秒);    重复执行
+    *
+    *   clearInterval(timer);    清除
+    * */
+
+    /*i = 0;
+    var timer = null;
+
+    function fn1() {
+        i++;
+        document.title = i;
+
+        if(i === 10){
+            clearInterval(timer);
+        }
+    }
+    timer = setInterval(fn1, 100); //1000毫秒后执行函数 fn1*/
+
+    var aBtn = document.getElementsByTagName('button');
+    var arrUrl = [
+        '../img/IMG_0396.JPG',
+        '../img/IMG_0397.JPG',
+        '../img/IMG_0398.JPG',
+        '../img/IMG_0399.JPG',
+        '../img/IMG_0400.JPG',
+        '../img/IMG_0401.JPG'
+    ];
+    var num = 1;
+    var timer = null;
+    var oBody = document.body;
+
+    aBtn[0].onclick = function () {
+        clearInterval(timer);
+        timer = setInterval(function () {
+            oBody.style.backgroundImage = 'url(' +arrUrl[num] + ')';
+            num++;
+            num %= arrUrl.length;
+        },1000)
+    };
+    aBtn[1].onclick = function () {
+        clearInterval(timer);
+    };
+    //oBody.style.backgroundImage = 'url(' +arrUrl[num] + ')';
+
+</script>
+</body>
+</html>
