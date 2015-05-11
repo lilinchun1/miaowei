@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    /*fn1(1,2,3); //实参——实际传递的函数
+    function fn1(a, b, c) { //形参——a，b，c这些名代表123
+        //arguments ==>[1,2,3] 实参的集合
+        console.log(arguments[arguments.length -1]);
+    }*/
+
+    //当函数的参数个数无法确定的时候 用arguments
+    /*function sum() {
+        var n = 0;
+        for(var i = 0; i < arguments.length; i++){
+            n += arguments[i];
+        }
+        return n;
+    }
+
+    console.log(sum(1,2,3));
+    console.log(sum(1,2,3,4,5,6,7))*/
+
+    var a = 1;
+    function fn2(a) {
+        arguments[0] = 3;
+        console.log(a);     //3
+        var a = 2;
+        console.log(arguments[0]);  //2
+    }
+    fn2(a);
+    console.log(a);   //1
+</script>
+</body>
+</html>
