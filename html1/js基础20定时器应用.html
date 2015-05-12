@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #wrap{
+            position: relative;
+            margin: 0 auto;
+            width: 800px;
+            height: 600px;
+            background-color: #333333;
+        }
+        h2{
+            padding: 15px 0;
+            height: 30px;
+            line-height: 30px;
+            font-size: 20px;
+            color: #ffffff;
+            text-indent: 20px;
+        }
+        #img{
+            margin: 0 auto;
+            width: 740px;
+            height: 440px;
+            background: #333 url(../img/loading.gif) 50% 50% no-repeat;
+        }
+        #img img{
+            width: 100%;
+            height: 100%;
+        }
+        ul{
+            position: absolute;
+            right: 50%;
+        }
+        li{
+            position: relative;
+            left: 50%;
+            margin: 50px 5px;
+            width: 20px;
+            height: 20px;
+            background-color: #fff22e;
+            border-radius: 50%;
+            display: inline-block;
+            list-style-type: none;
+            cursor: pointer;
+        }
+        .active{
+            background-color: indianred;
+        }
+        .btn-left,
+        .btn-right{
+            position: absolute;
+            top: 44%;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(255, 248, 98, .8);
+            border: 0;
+            cursor: pointer;
+            font-size: 30px;
+            color: #ffffff;
+        }
+        .btn-left{
+            left: 50px;
+        }
+        .btn-right{
+            right: 50px;
+        }
+        .simg{
+            position: absolute;
+            top: -100px;
+            left: -42px;
+            width: 100px;
+            height: 70px;
+            border: 5px solid #fff;
+        }
+        .simg img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <h2>带缩略图的图片轮换</h2>
+    <div id="img">
+        <img src="" alt=""/>
+    </div>
+    <ul>
+        <!--<li class="active">
+            <div class="simg">
+                <img src="../img/IMG_0396.JPG" alt=""/>
+            </div>
+        </li>-->
+    </ul>
+    <button class="btn-left"> L </button>
+    <button class="btn-right"> R </button>
+</div>
+<script>
+    window.onload = function () {
+        var arrImg = [
+            '../img/IMG_0396.JPG',
+            '../img/IMG_0397.JPG',
+            '../img/IMG_0398.JPG',
+            '../img/IMG_0399.JPG',
+            '../img/IMG_0400.JPG',
+            '../img/IMG_0401.JPG'
+        ];
+        var imgNb = arrImg.length;
+        var oWarp = document.getElementById('wrap');
+        var oImg = document.getElementById('img');
+        var aImg = oImg.getElementsByTagName('img')[0];
+        var oUl = oWarp.getElementsByTagName('ul')[0];
+        var oLi = oUl.getElementsByTagName('li');
+        var oBtn = oWarp.getElementsByTagName('button');
+        var oNum = 0;
+        var arrLi = [];
+
+/////////////////////////////////////////
+        var timer = null;
+        function autoPlay() {
+          timer = setInterval(function () {
+                oNum ++;
+                oNum %= arrImg.length;
+                show();
+            },1000);
+        }
+        //autoPlay();
+        setTimeout(autoPlay, 3000);
+        oWarp.onmouseover = function () {
+            clearInterval(timer);
+        };
+        oWarp.onmouseout = autoPlay;
+
+//////////////////////////////////////////
+
+        //初始化
+        for(var i = 0; i < imgNb; i++){
+            arrLi += '<li></li>';
+        }
+        oUl.innerHTML = arrLi;
+
+        function show() {
+            for(var i = 0; i < imgNb; i++){
+                oLi[i].className = '';
+            }
+            aImg.src = arrImg[oNum];
+            oLi[oNum].className = 'active';
+            console.log(oNum)
+        }
+
+        show();
+
+        //左右按钮点击轮播
+        oBtn[0].onclick = function () {
+            if(oNum == imgNb - 1){
+                oNum = 0;
+            }
+            else{
+                oNum ++;
+            }
+            show();
+        };
+
+        oBtn[1].onclick = function () {
+            if(oNum == 0){
+                oNum = imgNb -1;
+            }
+            else{
+                oNum --;
+            }
+            show();
+        };
+
+        //点击原点切换图片
+        for(var i = 0; i < oLi.length; i++){
+            oLi[i].index = i;
+            oLi[i].onclick = function () {
+                console.log(this.index);
+                oNum = this.index;
+                show();
+            };
+
+            oLi[i].onmouseover = function () {
+                this.innerHTML = '<div class="simg"><img src="'+ arrImg[this.index] +'" alt=""/></div>'
+            };
+
+            oLi[i].onmouseout = function () {
+                this.innerHTML = '';
+            }
+        }
+    }
+</script>
+</body>
+</html>

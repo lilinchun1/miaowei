@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #div{
+            width: 600px;
+            height: 500px;
+            background-color: #ccc;
+            margin: 0 auto;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="div"></div>
+<script>
+
+    //var timer = setTimeout(函数, 毫秒)     //执行一次
+    //clearTimeout(timer);
+
+
+    window.onload = function () {
+        var oDiv = document.getElementById('div');
+         setTimeout(function () {
+            oDiv.style.display = 'block';
+            setTimeout(function () {
+                oDiv.style.display = 'none';
+            },3000)
+        },2000)
+    }
+</script>
+</body>
+</html>

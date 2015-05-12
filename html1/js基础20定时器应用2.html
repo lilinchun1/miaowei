@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 400px;
+            background: #ff99cc;}
+        #div2{
+            position: absolute;
+            top: 10px;
+            left: 220px;
+            width: 240px;
+            height: 180px;
+            background-color: #ffcc66;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+<div id="div2"></div>
+<script>
+    window.onload = function () {
+        var oDiv1 = document.getElementById('div1');
+        var oDiv2 = document.getElementById('div2');
+        var timer = null;
+
+        oDiv1.onmouseover = show;
+        oDiv1.onmouseout = hide;
+
+        oDiv2.onmouseover = show;
+        oDiv2.onmouseout = hide;
+
+        function show() {
+            clearTimeout(timer);
+            oDiv2.style.display = 'block';
+        }
+
+        function hide() {
+            timer = setTimeout(function () {
+                oDiv2.style.display = 'none';
+            },400);
+        }
+    }
+</script>
+</body>
+</html>
