@@ -51,35 +51,58 @@
 <body>
 <div id="wrap">
     <ul id="list-left">
-        <li class="active">1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>6</li>
-        <li>7</li>
-        <li>8</li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
     </ul>
-    <div class="img"><img src="../img/IMG_0396.JPG" alt=""/></div>
+    <div class="img"><img src="" alt=""/></div>
     <ul id="list-right">
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>6</li>
-        <li>7</li>
-        <li>8</li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
     </ul>
 </div>
 <script>
     window.onload = function () {
         var oWrap = document.getElementById('wrap');
-        slide(oWrap);
+        var arrImg1 = [
+            "../img/IMG_0396.JPG",
+            "../img/IMG_0397.JPG",
+            "../img/IMG_0398.JPG",
+            "../img/IMG_0399.JPG",
+            "../img/IMG_0400.JPG",
+            "../img/IMG_0401.JPG",
+            "../img/IMG_0402.JPG",
+            "../img/IMG_0405.JPG"
+        ];
+        var arrImg2 = [
+            "../img/IMG_0405.JPG",
+            "../img/IMG_0402.JPG",
+            "../img/IMG_0401.JPG",
+            "../img/IMG_0400.JPG",
+            "../img/IMG_0399.JPG",
+            "../img/IMG_0398.JPG",
+            "../img/IMG_0397.JPG",
+            "../img/IMG_0396.JPG"
+        ];
+
+        slide(oWrap, arrImg1, arrImg2);
     };
-    function slide(wrap) {
+    function slide(wrap, arrImg1, arrImg2) {
         var oUl = wrap.getElementsByTagName('ul');
-        var oImg = wrap.getElementsByTagName('img');
+        var oImg = wrap.getElementsByTagName('img')[0];
+        var aLi = wrap.getElementsByTagName('li');
+
     }
 </script>
 </body>
